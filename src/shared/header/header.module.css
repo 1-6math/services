@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  align-items: center;
+  padding: 10px 24px;
+  top: 0;
+  background-color: white;
+  z-index: 800;
+  border-bottom: 1px solid gray;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button > span {
+  font-size: 0.8rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  gap: 1rem;
+}
+
+.user_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop_over {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  right: 0;
+  padding: 8px 4px;
+  transform: translate(-10px, 100%);
+  width: 192px;
+  background-color: #323333;
+  border: 1px solid rgb(2, 22, 49);
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+}
+
+.pop_button {
+  display: block;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  padding: 4px;
+}
+
+.pop_button:hover {
+  color: rgb(191, 198, 136);
+}
+
+.active {
+  color: black;
+  font-size: large;
+  font-weight: 700;
+}
+
+.inactive {
+  color: gray;
+}
+
+@media (max-width: 600px) {
+  .active {
+    font-size: medium;
+  }
+  .inactive {
+    font-size: small;
+  }
+}
