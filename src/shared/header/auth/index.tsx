@@ -1,11 +1,11 @@
-// import { auth } from '@/auth';
+import { auth } from '../../../../auth';
 import { SignIn } from './SignIn';
-// import UserMenu from './UserMenu';
+import UserMenu from './UserMenu';
 
 export default async function AuthButton() {
-	// const session = await auth();
-	const session = { user: undefined };
+	const session = await auth();
+
 	if (!session?.user) return <SignIn />;
 
-	// return <UserMenu image={session.user.image!} />;
+	return <UserMenu image={session.user.image!} />;
 }

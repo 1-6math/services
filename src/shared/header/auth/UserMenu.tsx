@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useReducer } from 'react';
+import { signOut } from 'next-auth/react';
 import style from '../header.module.css';
-//   import { signOut } from 'next-auth/react';
 
 export default function UserMenu({ image }: { image: string }) {
 	const [isOpen, toggleIsOpen] = useReducer((v) => !v, false);
@@ -20,12 +20,7 @@ export default function UserMenu({ image }: { image: string }) {
 					<Link className={style.pop_button} href="/mypage" onClick={() => toggleIsOpen()}>
 						마이페이지
 					</Link>
-					<button
-						type="button"
-						className={style.pop_button}
-						onClick={() => {}}
-						//  signOut()}
-					>
+					<button type="button" className={style.pop_button} onClick={() => signOut()}>
 						Sign Out
 					</button>
 				</div>
