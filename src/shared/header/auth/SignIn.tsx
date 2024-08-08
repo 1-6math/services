@@ -12,7 +12,7 @@ export function SignIn() {
 			}}
 		>
 			<button type="submit">
-				<Image src="/images/google_signin.png" alt="Login" width={160} height={40} />
+				<Image src="/images/google_signin.png" alt="Login" width={500} height={300} />
 			</button>
 		</form>
 	);
