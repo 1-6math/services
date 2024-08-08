@@ -9,9 +9,10 @@ export const authConfig = {
 	callbacks: {
 		authorized({ auth, request: { nextUrl } }) {
 			const isLoggedIn = !!auth?.user;
-			const protectedPath = ['/mypage'];
-			const isProtected = protectedPath.includes(nextUrl.pathname);
-			if (isProtected) {
+			const openedPath = ['/'];
+			const isOpened = openedPath.includes(nextUrl.pathname);
+
+			if (!isOpened) {
 				if (isLoggedIn) return true;
 				return Response.redirect(new URL('/', nextUrl));
 			}
