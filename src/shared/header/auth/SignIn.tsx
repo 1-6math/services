@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { signIn } from '../../../../auth';
+import { signIn } from '../../../auth';
 
 export function SignIn() {
 	return (
@@ -11,8 +11,8 @@ export function SignIn() {
 				await signIn('google');
 			}}
 		>
-			<button type="submit" className="no_style_btn">
-				<Image src="/images/google_signin.png" alt="Login" width={160} height={40} />
+			<button type="submit">
+				<Image src="/images/google_signin.png" alt="Login" width={500} height={300} />
 			</button>
 		</form>
 	);

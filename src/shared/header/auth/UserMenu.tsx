@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useReducer } from 'react';
 import { signOut } from 'next-auth/react';
@@ -17,9 +16,9 @@ export default function UserMenu({ image }: { image: string }) {
 			</button>
 			{isOpen && (
 				<div className={style.pop_over}>
-					<Link className={style.pop_button} href="/mypage" onClick={() => toggleIsOpen()}>
+					{/* <Link className={style.pop_button} href="/mypage" onClick={() => toggleIsOpen()}>
 						마이페이지
-					</Link>
+					</Link> */}
 					<button type="button" className={style.pop_button} onClick={() => signOut()}>
 						Sign Out
 					</button>
