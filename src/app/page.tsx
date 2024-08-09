@@ -1,12 +1,12 @@
-import { SignIn } from '@/shared/header/auth/SignIn';
+import { auth } from '@/auth';
+import AuthChecker from '@/features/home/AuthChecker';
+import { SignIn } from '@/features/home/SignIn';
 
-export default function Home() {
+export default async function Home() {
+	const session = await auth();
 	return (
 		<main className="flex min-h-screen flex-col items-center p-24 gap-6 lg:gap-9">
-			<p className="text-center font-bold text-lg lg:text-3xl md:text-xl">
-				로그인 후 서비스 이용 가능합니다.
-			</p>
-			<SignIn />
+			{session?.user ? <AuthChecker email={session.user.email!} /> : <SignIn />}
 		</main>
 	);
 }

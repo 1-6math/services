@@ -11,7 +11,6 @@ export const authConfig = {
 			const isLoggedIn = !!auth?.user;
 			const openedPath = ['/'];
 			const isOpened = openedPath.includes(nextUrl.pathname);
-
 			if (!isOpened) {
 				if (isLoggedIn) return true;
 				return Response.redirect(new URL('/', nextUrl));
