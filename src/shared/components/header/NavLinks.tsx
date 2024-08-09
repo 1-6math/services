@@ -3,10 +3,12 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import style from './header.module.css';
-import { NAVIGATION_LIST } from '../const/navi';
+import { NAVIGATION_LIST } from '@/shared/const/navi';
+import { useAuthorizedRouter } from '@/shared/hook/useAuthorized';
 
 export default function NavLinks() {
 	const pathname = usePathname();
+	useAuthorizedRouter(pathname);
 
 	return (
 		<nav className={style.navigation}>

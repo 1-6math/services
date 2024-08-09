@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './header.module.css';
-import AuthButton from './auth';
 import NavLinks from './NavLinks';
 import HomeIcon from './HomeIcon';
+import AuthButton from './auth';
 
-export default function Header() {
+export default async function Header() {
 	return (
 		<header className={styles.header}>
 			<div className={styles.left}>

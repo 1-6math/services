@@ -1,4 +1,4 @@
-import { auth } from '../../../auth';
+import { auth } from '@/auth';
 import UserMenu from './UserMenu';
 
 export default async function AuthButton() {
