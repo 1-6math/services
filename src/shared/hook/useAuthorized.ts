@@ -13,8 +13,11 @@ export const useAuthorizedRouter = (path: string) => {
 				setUserAuth(undefined);
 				return;
 			}
+			if (userAuth) {
+				return;
+			}
 
-			if (!userAuth && path !== '/' && session.user.email) {
+			if (path !== '/' && session.user.email) {
 				try {
 					const user = await checkUser({ email: session.user.email });
 					if (!user || (user.auth !== 1 && user.auth !== 2 && user.auth !== 3)) {
@@ -30,5 +33,5 @@ export const useAuthorizedRouter = (path: string) => {
 		};
 
 		authorize();
-	}, [path, session, router]);
+	}, [path, session, router, userAuth]);
 };
