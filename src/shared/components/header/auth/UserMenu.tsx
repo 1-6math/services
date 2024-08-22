@@ -3,10 +3,13 @@
 import Image from 'next/image';
 import { useReducer } from 'react';
 import { signOut } from 'next-auth/react';
+import Link from 'next/link';
+import { getAuthGrade } from '@/shared/const/client';
 import style from '../header.module.css';
 
 export default function UserMenu({ image }: { image: string }) {
 	const [isOpen, toggleIsOpen] = useReducer((v) => !v, false);
+	const auth = getAuthGrade();
 
 	return (
 		<div style={{ position: 'relative' }}>
@@ -16,11 +19,13 @@ export default function UserMenu({ image }: { image: string }) {
 			</button>
 			{isOpen && (
 				<div className={style.pop_over}>
-					{/* <Link className={style.pop_button} href="/mypage" onClick={() => toggleIsOpen()}>
-						마이페이지
-					</Link> */}
+					{auth === 1 && (
+						<Link className={style.pop_button} href="/mypage" onClick={() => toggleIsOpen()}>
+							선생 관리
+						</Link>
+					)}
 					<button type="button" className={style.pop_button} onClick={() => signOut()}>
-						Sign Out
+						로그아웃
 					</button>
 				</div>
 			)}

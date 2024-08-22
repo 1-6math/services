@@ -1,19 +1,23 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { checkUser } from '@/api/user';
+import { getAuthGrade, setAuthGrade } from '../const/client';
 
 export const useAuthorizedRouter = (path: string) => {
 	const { data: session } = useSession();
 	const router = useRouter();
-	const [userAuth, setUserAuth] = useState<number>();
+	const auth = getAuthGrade();
+	console.log(auth);
 	useEffect(() => {
 		const authorize = async () => {
 			if (!session?.user) {
-				setUserAuth(undefined);
+				setAuthGrade(undefined);
 				return;
 			}
-			if (userAuth) {
+			if (auth) {
 				return;
 			}
 
@@ -23,7 +27,7 @@ export const useAuthorizedRouter = (path: string) => {
 					if (!user || (user.auth !== 1 && user.auth !== 2 && user.auth !== 3)) {
 						router.push('/');
 					} else {
-						setUserAuth(user.auth);
+						setAuthGrade(user.auth);
 					}
 				} catch (error) {
 					console.error('Authorization check failed:', error);
@@ -33,5 +37,5 @@ export const useAuthorizedRouter = (path: string) => {
 		};
 
 		authorize();
-	}, [path, session, router, userAuth]);
+	}, [path, session, router]);
 };
